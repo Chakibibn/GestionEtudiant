@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      template="/WEB-INF/template.xhtml"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Etudint</title>
+        <style>
+
+            ul{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .myP{
+                border-style: hidden !important;
+            }
+            .header{
+                background-color: white;
+                position: relative;
+                -webkit-box-shadow: 0 0 10px #ddd;
+                -moz-box-shadow: 0 0 10px #ddd;
+                box-shadow: 0 0 10px #ddd;
+            }
+            .header .container{
+                align-items: center
+            }
+            .header .logo {
+                color: #2196F3;
+                font-size: 26px;
+                font-weight: bold;
+                height: 72px;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none
+
+            }
+
+        </style>
+    </h:head>
+    <f:metadata>
+        <f:viewParam name="nom" value="#{ajouterEtudian.etudiantName}"/>
+        <f:viewParam name="canedit" value="#{ajouterEtudian.canEdit}"/>
+        <f:viewParam name="pnom" value="#{ajouterEtudian.etudiantPName}"/>
+        <f:viewParam name="date" value="#{ajouterEtudian.etudiantDate}"/>
+    </f:metadata>
+    <h:body title="#{ajouterEtudian.messagetete}" >
+        #{ajouterEtudian.initFormEtudiant()}
+        <div class="header" id="header">
+            <div class="container" style="align-items: center">
+                <a href="#" class="logo">Triz Etudiant</a>
+
+            </div>
+        </div>
+        <br/>
+
+        <div style="margin-left: 10%; height: 650px;width: 80%;border: 2px solid fff;border-radius: 5px;box-shadow: 0 0 10px #ddd;">
+            <div style="width: 80%; margin-left: 10%">
+                
+                <h:form id="formulaire" title="#{ajouterEtudian.messagetete}">
+                    <div style="margin-left: 50%"><p:column>
+                        <p:outputLabel  value="#{ajouterEtudian.messagetete}"/>
+                        </p:column></div>
+                    <h:panelGrid columns="2" cellpadding="10"  id="panelInfo" title="#{ajouterEtudian.messagetete}"  >
+                        <p:outputLabel value="Nom:"/>
+                        <p:inputText value="#{ajouterEtudian.etudiantSelected.nomEtudiant}" size="55" placeholder="Ex: Ibnaissa" required="true"  rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.nomEtudiant}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="Prénom :"/>
+                        <p:inputText value="#{ajouterEtudian.etudiantSelected.LPEtudiant}" size="55" placeholder="Ex: Mohamed chakib" required="true" rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.LPEtudiant}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="Email:"/>
+                        <p:inputText value="#{ajouterEtudian.etudiantSelected.email}" size="55" placeholder="Ex: chakibibn@hotmail.com" required="true" rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.email}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="Telephone:"/>
+                        <p:inputText  value="#{ajouterEtudian.etudiantSelected.numTel}" placeholder="Ex: 0540990918 " size="55" required="true" rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.numTel}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="Adresse:"/>
+                        <p:inputText value="#{ajouterEtudian.etudiantSelected.adresse}"  placeholder="Ex: Rue Kamariz 69 Blida" size="55" required="true"  rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.adresse}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="date de naissance:"/>
+                        <p:inputText value="#{ajouterEtudian.etudiantSelected.dateNaissance}"  size="55" placeholder="Ex: 13/05/1997" required="true" rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.dateNaissance}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="Prénom de Pére :"/>
+                        <p:inputText value="#{ajouterEtudian.etudiantSelected.prenomPere}" size="55" placeholder="Ex: Abdselam" required="true" rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.prenomPere}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="Nom Mére :"/>
+
+                        <p:inputText value="#{ajouterEtudian.etudiantSelected.nomMere}" size="55" placeholder="Ex: Safarzitoune" required="true" rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.nomMere}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="Prénom Mére :"/>
+                        <p:inputText value="#{ajouterEtudian.etudiantSelected.prenomMere}" size="55" placeholder="Ex: Fadhila"  required="true" rendered="#{ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="#{ajouterEtudian.etudiantSelected.prenomMere}" style="width: 55px;" rendered="#{!ajouterEtudian.modifier}"/>
+                        <p:outputLabel value="Spécilatité"/>
+                        <p:selectOneMenu value="#{ajouterEtudian.etudiantSelected.idSpecialte}" filter="true"  disabled="#{!ajouterEtudian.modifier}">
+                            <f:selectItem itemValue="2" itemLabel="MI "/>
+                            <f:selectItem itemValue="3" itemLabel="INFORMATIQUE "/>
+                            <f:selectItem itemValue="4" itemLabel="SIQ"/>
+                            <f:selectItem itemValue="5" itemLabel="ISIL"/>
+                            <f:selectItem itemValue="6" itemLabel="IL"/>
+                            <f:selectItem itemValue="7" itemLabel="SSI"/>
+                            <f:selectItem itemValue="8" itemLabel="SIR"/>
+                            <f:selectItem itemValue="9" itemLabel="TAL"/>
+
+                        </p:selectOneMenu>
+                        <!--<p:panelGrid columns="4">
+                            <h:outputText value="Moyenne Semestre " rendered="{!ajouterEtudian.modifier}"  />
+                        </p:panelGrid>-->
+
+                        <h:panelGrid columns="2" cellpadding="10"  >
+                            <p:commandButton value="Liste des etudiants" action="#{ajouterEtudian.consulterListeEtudiant()}" rendered="#{!ajouterEtudian.modifier}" >
+
+                            </p:commandButton>
+                            <p:commandButton value="Ajouter" action="#{ajouterEtudian.ajouterEtudiant()}" rendered="#{ajouterEtudian.modifier}" >
+
+                            </p:commandButton>
+
+                            <p:commandButton value="Modifier" action="#{ajouterEtudian.modifier()}" rendered="#{!ajouterEtudian.modifier}" >
+
+                            </p:commandButton>
+                        </h:panelGrid>
+
+                        
+                    </h:panelGrid> 
+                </h:form>
+
+            </div>
+        </div>
+
+    </h:body>
+</html>
+
